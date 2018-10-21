@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: $card-height;
+  width: $card-width;
+  background-color: #f8f8f8;
+
+  @include mobile {
+    transform: rotate(90deg);
+    margin: -4vmin 4vmin;
+  }
+
+  &:hover {
+    border-color: $blue;
+  }
+
+  &[selected='true'] {
+    border-color: $blue;
+    box-shadow: 0 0 0 1px $blue;
+  }
+
+  svg {
+    width: 80%;
+  }
+
+  &.striped {
+    stroke-width: 2px;
+    &.red {
+      .shape,
+      pattern {
+        stroke: $shape-red;
+      }
+    }
+
+    &.green {
+      .shape,
+      pattern {
+        stroke: $shape-green;
+      }
+    }
+
+    &.purple {
+      .shape,
+      pattern {
+        stroke: $shape-purple;
+      }
+    }
+  }
+
+  &.open {
+    .shape {
+      fill: none;
+      stroke-width: 2px;
+    }
+    &.red .shape {
+      stroke: $shape-red;
+    }
+
+    &.green .shape {
+      stroke: $shape-green;
+    }
+
+    &.purple .shape {
+      stroke: $shape-purple;
+    }
+  }
+
+  &.solid {
+    &.red .shape {
+      background: $shape-red;
+      fill: $shape-red;
+    }
+
+    &.green .shape {
+      background: $shape-green;
+      fill: $shape-green;
+    }
+
+    &.purple .shape {
+      background: $shape-purple;
+      fill: $shape-purple;
+    }
+  }
+}

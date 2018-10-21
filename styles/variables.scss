@@ -1,0 +1,20 @@
+// cards
+$shape-green: #3acc40;
+$shape-purple: #7673cf;
+$shape-red: #ff0073;
+
+$card-height: 28vmin;
+$card-width: 20vmin;
+
+// ui
+$blue: #009ffd;
+$green: #40cb90;
+$grey: #555555;
+$purple: #b7adcf;
+$white: #ffffff;
+
+@mixin mobile {
+  @media (max-width: 480px) {
+      @content;
+  }
+}
