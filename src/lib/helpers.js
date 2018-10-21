@@ -1,3 +1,4 @@
+// generate all the cards
 const cardAttrs = [
   [1, 2, 3],
   ['solid', 'open', 'striped'],
@@ -20,8 +21,29 @@ const generateAllCards = () => {
   });
 };
 
-const shuffle = a => a.sort(() => 0.5 - Math.random());
+// knuth-shuffle
+const shuffle = array => {
+  let currentIndex = array.length;
+  let temporaryValue ;
+  let randomIndex;
 
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+// determine if three cards make a set
 const allSame = (attr, a, b, c) => a[attr] === b[attr] && b[attr] === c[attr];
 const allDiff = (attr, a, b, c) =>
   a[attr] !== b[attr] && b[attr] !== c[attr] && a[attr] !== c[attr];
@@ -33,6 +55,7 @@ const isSet = (a, b, c) =>
   isValidAttr('shape', a, b, c) &&
   isValidAttr('color', a, b, c);
 
+// check if any sets are present
 function* combinations(board) {
   for (let i = 0; i < board.length - 2; i++) {
     for (let j = i + 1; j < board.length - 1; j++) {
@@ -42,7 +65,6 @@ function* combinations(board) {
     }
   }
 }
-
 const isSetPresent = board => {
   for (const cards of combinations(board)) {
     if (isSet(...cards)) {
