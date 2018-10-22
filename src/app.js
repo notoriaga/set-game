@@ -91,7 +91,7 @@ const view = (state, actions) =>
       })
     ),
     Controls(state, actions),
-    div(`${state.score} sets found`),
+    div(`score: ${state.score}`),
     Timer(state, actions),
     !!state.board.length && !isSetPresent(state.board) && div('no sets found'),
   ]);
